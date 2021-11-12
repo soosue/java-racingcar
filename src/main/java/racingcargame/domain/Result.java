@@ -19,12 +19,4 @@ public class Result {
         return currentStates;
     }
 
-    public String getResultString() {
-        StringBuilder sb = new StringBuilder();
-        currentStates.forEach(currentState -> {
-            sb.append(currentState).append('\n');
-        });
-        return sb.toString();
-    }
-
 }

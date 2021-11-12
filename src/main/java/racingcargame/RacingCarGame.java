@@ -58,7 +58,7 @@ public class RacingCarGame {
     private void printResult(List<Result> results) {
         resultView.printResultMessage();
         results.forEach(result -> {
-            resultView.printCurrentStateOfRacingCar(result.getResultString());
+            resultView.printCurrentStateOfRacingCar(result.getCurrentStates());
         });
     }
 
