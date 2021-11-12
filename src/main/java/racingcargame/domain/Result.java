@@ -15,6 +15,10 @@ public class Result {
         return result;
     }
 
+    public List<String> getCurrentStates() {
+        return currentStates;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
