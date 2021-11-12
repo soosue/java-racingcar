@@ -8,9 +8,9 @@ public class InputView {
     private static final String READ_TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
     private final Scanner scanner = new Scanner(System.in);
 
-    public String readCarsName() {
+    public String[] readCarNames() {
         System.out.println(READ_CARS_NAME_MESSAGE);
-        return scanner.nextLine();
+        return scanner.nextLine().split(",");
     }
 
     public int readTryCount() {
