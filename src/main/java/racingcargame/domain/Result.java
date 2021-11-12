@@ -19,11 +19,10 @@ public class Result {
         return currentStates;
     }
 
-    @Override
-    public String toString() {
+    public String getResultString() {
         StringBuilder sb = new StringBuilder();
-        currentStates.forEach(currentStates -> {
-            sb.append(currentStates).append('\n');
+        currentStates.forEach(currentState -> {
+            sb.append(currentState).append('\n');
         });
         return sb.toString();
     }

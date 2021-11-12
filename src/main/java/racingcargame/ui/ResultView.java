@@ -17,8 +17,8 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public void printCurrentStateOfRacingCar(String state) {
-        System.out.println(state);
+    public void printCurrentStateOfRacingCar(String result) {
+        System.out.println(result);
     }
 
 }
