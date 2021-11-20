@@ -1,7 +1,5 @@
 package racingcargamefinal.domain;
 
-import racingcargamefinal.utils.RandomUtils;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,27 +20,24 @@ public class Cars {
     }
 
     public Cars move() {
-        return new Cars(
-                cars.stream().map(car ->
-                        car.move(new MoveValue(RandomUtils.getRandomValue()))
-                ).collect(Collectors.toList()));
+        return new Cars(cars.stream()
+                .map(Car::move)
+                .collect(Collectors.toList()));
     }
 
     public Winners findWinners() {
-        return new Winners(findWinners(findMaxPosition()));
+        return new Winners(findWinners(findWinnerCar()));
     }
 
-    private Position findMaxPosition() {
-        Position maxPosition = cars.stream()
-                .map(car -> car.getPosition())
-                .max(Position::compareTo)
-                .orElse(Position.ZERO);
-        return maxPosition;
-    }
-
-    private List<Car> findWinners(Position maxPosition) {
+    private Car findWinnerCar() {
         return cars.stream()
-                .filter(car -> car.isWinner(maxPosition))
+                .max(Car::compareTo)
+                .orElse(new Car("zero"));
+    }
+
+    private List<Car> findWinners(Car winnerCar) {
+        return cars.stream()
+                .filter(car -> car.isSamePosition(winnerCar))
                 .collect(Collectors.toList());
     }
 

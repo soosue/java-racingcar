@@ -1,8 +1,10 @@
 package racingcargamefinal.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -23,6 +25,11 @@ public class NameTest {
             new Name(carName);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 없거나 5자를 초과할 수 없습니다.");
+    }
+
+    @Test
+    void equals() {
+        assertThat(new Name("pobi")).isEqualTo(new Name("pobi"));
     }
 
 }

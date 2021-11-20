@@ -12,14 +12,29 @@ public class Winners {
         this.winners = winners;
     }
 
-    public List<Car> getWinners() {
-        return Collections.unmodifiableList(winners);
-    }
-
     public String getWinnersString() {
         return getWinners().stream()
                 .map(winner -> winner.getName().getValue())
                 .collect(Collectors.joining(","));
+    }
+
+    public List<Car> getWinners() {
+        return Collections.unmodifiableList(winners);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Winners winners1 = (Winners) o;
+
+        return winners != null ? winners.equals(winners1.winners) : winners1.winners == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return winners != null ? winners.hashCode() : 0;
     }
 
 }

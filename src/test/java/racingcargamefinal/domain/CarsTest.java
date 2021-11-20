@@ -25,8 +25,9 @@ public class CarsTest {
         Car honux = new Car("honux", 3);
 
         Cars cars = new Cars(Arrays.asList(pobi, crong, honux));
+        Winners winnersExpected = new Winners(Arrays.asList(pobi, honux));
 
-        assertThat(cars.findWinners().getWinners()).containsExactly(pobi, honux);
+        assertThat(cars.findWinners()).isEqualTo(winnersExpected);
     }
 
 }

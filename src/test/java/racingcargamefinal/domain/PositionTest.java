@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class PositionTest {
 
@@ -16,8 +17,9 @@ public class PositionTest {
 
     @Test
     void create() {
-        assertThat(position).isEqualTo(new Position(3));
-        assertThat(Position.ZERO).isEqualTo(new Position(0));
+        assertDoesNotThrow(() -> {
+            new Position(0);
+        });
     }
 
     @Test
@@ -31,6 +33,12 @@ public class PositionTest {
     @Test
     void move() {
         assertThat(position.move()).isEqualTo(new Position(4));
+    }
+
+    @Test
+    void equals() {
+        assertThat(position).isEqualTo(new Position(3));
+        assertThat(Position.ZERO).isEqualTo(new Position(0));
     }
 
     @ParameterizedTest
